@@ -6,6 +6,7 @@ namespace task01.myClasses
     {
         public string Name { get; set; }
         public int Skill { get; set; }
+        public Car Car { get; set; }
 
         public Driver(string name, int skill)
         {
@@ -14,4 +15,6 @@ namespace task01.myClasses
         }
     }
 }
+
+
     

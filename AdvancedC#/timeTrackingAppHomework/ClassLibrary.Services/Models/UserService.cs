@@ -1,5 +1,4 @@
-﻿
-using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 using ClassLibrary.Helpers;
 using ClassLibrary.Services.Interfaces;
 using System.Data;
@@ -29,8 +28,9 @@ namespace ClassLibrary.Services.Models
            
         }
 
+       
 
-        public void Register(string username, string password)
+        public void Register(string firstName,string lastName,string username, string password)
         {
           
             bool userExists = GetAll().Any(x => x.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
@@ -48,9 +48,10 @@ namespace ClassLibrary.Services.Models
             {
                 throw new Exception("Invalid password format!");
             }
-            User newUser = new User(username, password);
+            User newUser = new User(firstName,lastName,username, password);
             
             Insert(newUser);
         }
+
     }
 }

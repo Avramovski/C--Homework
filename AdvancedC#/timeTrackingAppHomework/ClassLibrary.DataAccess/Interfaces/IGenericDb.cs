@@ -1,6 +1,4 @@
-﻿
-
-using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 
 namespace ClassLibrary.DataAccess.Interfaces
 {
@@ -8,5 +6,8 @@ namespace ClassLibrary.DataAccess.Interfaces
     {
         int Add(T entity);
         List<T> GetAll();
+        bool Update(T entity);
+        T GetById(int id);
+
     }
 }

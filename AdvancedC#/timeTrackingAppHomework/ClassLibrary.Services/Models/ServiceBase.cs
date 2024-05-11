@@ -1,6 +1,6 @@
 ﻿using ClassLibrary.DataAccess.Interfaces;
 using ClassLibrary.DataAccess.Models;
-using ClassLibrary.Domain;
+using ClassLibrary.Domain.DomainModels;
 using ClassLibrary.Services.Interfaces;
 
 namespace ClassLibrary.Services.Models
@@ -23,8 +23,13 @@ namespace ClassLibrary.Services.Models
         }
         public void Seed(List<T> entities)
         {
-
             entities.ForEach(entity => _db.Add(entity));
         }
+        public bool Update(T entity)
+        {
+            _db.Update(entity);
+            return true;
+        }
+
     }
 }

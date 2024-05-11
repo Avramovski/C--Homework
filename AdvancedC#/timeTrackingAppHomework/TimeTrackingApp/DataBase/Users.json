@@ -1,0 +1,22 @@
+[
+    {
+        "FirstName": "Nikola",
+        "LastName": "Avramovski",
+        "Username": "Nikola",
+        "Password": "Nikola123",
+        "Reading": [],
+        "Exercising": [
+            {
+                "TimeSpentOnActivity": "00:00:04.5737788",
+                "Type": 3
+            },
+            {
+                "TimeSpentOnActivity": "00:00:06.1170986",
+                "Type": 3
+            }
+        ],
+        "Working": [],
+        "Hobbies": [],
+        "Id": 12
+    }
+]

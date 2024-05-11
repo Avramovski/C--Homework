@@ -1,5 +1,4 @@
-﻿
-using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 using ClassLibrary.Helpers;
 using ClassLibrary.Services.Enums;
 using ClassLibrary.Services.Interfaces;
@@ -55,6 +54,8 @@ namespace ClassLibrary.Services.Models
                 ExtendedConsole.PrintTitle("\n\n              *** THANK YOU FOR USING OUR APP ***");
                 Console.ReadLine();
             }
+
+       
     }
 }
 

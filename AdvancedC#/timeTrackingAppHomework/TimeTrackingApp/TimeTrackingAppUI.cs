@@ -1,5 +1,4 @@
-﻿
-using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 using ClassLibrary.Helpers;
 using ClassLibrary.Services.Interfaces;
 using ClassLibrary.Services.Models;
@@ -47,18 +46,22 @@ namespace TimeTrackingApp
                 {
                     User inputUser = _uiServices.LoginMenu();
                     _userService.Login(inputUser.Username, inputUser.Password);
-                    ExtendedConsole.PrintSuccess($"\nWelcome {_userService.CurrentUser.FirstName} {_userService.CurrentUser.Username} !");
+                    ExtendedConsole.PrintSuccess($"\nWelcome {_userService.CurrentUser.FirstName} {_userService.CurrentUser.Username} ");
+
+                    TrackActivityClass trackActivityClass = new TrackActivityClass();
+                    trackActivityClass.TrackActivity(inputUser);
                 }
                 else if (choice == 2)
                 {
                     User newUser = _uiServices.RegisterMenu();
-                    _userService.Register(newUser.Username, newUser.Password);
+                    _userService.Register(newUser.FirstName,newUser.LastName,newUser.Username, newUser.Password);
                     ExtendedConsole.PrintSuccess("Registration successful!");
+                   
                 }
                 else if (choice == 3)
                 {
                     _uiServices.EndMenu();
-                    _userService.Lgout();
+                    Environment.Exit(0);
                 }
             }
             catch (Exception ex)
@@ -95,15 +98,17 @@ namespace TimeTrackingApp
             {
                 ExtendedConsole.PrintError(ex.Message);
             }
+            _uiServices.EndMenu();
         }
         private void FixedUsers()
         {
-          
-            User user1 = new User("Nikola", "Avramovski", "Nikola", "Nikola123");
-            List<User> users = new List<User>() { user1 };
-
-            _userService.Seed(users);
+         
+            if (_userService.GetAll().Count < 1)
+            {
+                User user1 = new User("Nikola", "Avramovski", "Nikola", "Nikola123");
+                List<User> users = new List<User>() { user1 };
+                _userService.Seed(users);
+            }
         }
     }
 }
-

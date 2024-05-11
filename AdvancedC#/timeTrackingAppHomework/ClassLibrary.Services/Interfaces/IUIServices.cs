@@ -1,5 +1,4 @@
-﻿
-using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 using ClassLibrary.Services.Enums;
 
 namespace ClassLibrary.Services.Interfaces
@@ -11,5 +10,6 @@ namespace ClassLibrary.Services.Interfaces
         int ChooseMenu<T>(List<T> items);
         User RegisterMenu();
         void EndMenu();
+         
     }
 }

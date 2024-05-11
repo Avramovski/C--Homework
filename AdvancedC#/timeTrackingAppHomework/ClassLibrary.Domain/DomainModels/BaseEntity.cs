@@ -1,5 +1,4 @@
-﻿
-namespace ClassLibrary.Domain
+﻿namespace ClassLibrary.Domain.DomainModels
 {
     public abstract class BaseEntity
     {

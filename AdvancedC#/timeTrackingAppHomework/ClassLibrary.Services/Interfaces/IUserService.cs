@@ -1,6 +1,4 @@
-﻿
-
-using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 using System.Data;
 
 namespace ClassLibrary.Services.Interfaces
@@ -9,8 +7,9 @@ namespace ClassLibrary.Services.Interfaces
     {
         User CurrentUser { get; set; }
         void Login(string username, string password);
-        void Register(string username, string password);
+        void Register(string firstName, string lastName, string username, string password);
         void Lgout();
        
+
     }
 }

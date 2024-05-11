@@ -1,7 +1,7 @@
 ﻿
 
 using ClassLibrary.DataAccess.Interfaces;
-using ClassLibrary.Domain;
+using ClassLibrary.Domain.DomainModels;
 
 namespace ClassLibrary.DataAccess.Models
 {
@@ -15,19 +15,11 @@ namespace ClassLibrary.DataAccess.Models
             _db = new List<T>();
             IdCounter = 1;
         }
-        private int GenerateUniqueId()
-        {
-
-            IdCounter++;
-
-            return IdCounter;
-        }
+        
 
         public int Add(T entity)
         {
-
-            entity.Id = GenerateUniqueId();
-
+            entity.Id = IdCounter++;
             _db.Add(entity);
 
             return entity.Id;
@@ -36,6 +28,24 @@ namespace ClassLibrary.DataAccess.Models
         public List<T> GetAll()
         {
             return _db;
+        }
+        public T GetById(int id)
+        {
+            //_db.SingleOrDefault(x => x.Id == id);
+            return _db.FirstOrDefault(x => x.Id == id);
+        }
+        public bool Update(T entity)
+        {
+            try
+            {
+                T dbEntity = GetById(entity.Id);
+                dbEntity = entity;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Domain;
+﻿using ClassLibrary.Domain.DomainModels;
 
 namespace ClassLibrary.Services.Interfaces
 {
@@ -7,5 +7,7 @@ namespace ClassLibrary.Services.Interfaces
         List<T> GetAll();
         void Insert(T entity);
         void Seed(List<T> entities);
+        bool Update(T entity);
+
     }
 }

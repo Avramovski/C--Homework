@@ -48,21 +48,53 @@ namespace TimeTrackingApp
                     _userService.Login(inputUser.Username, inputUser.Password);
                     ExtendedConsole.PrintSuccess($"\nWelcome {_userService.CurrentUser.FirstName} {_userService.CurrentUser.Username} ");
 
+                    int choice2 = _uiServices.ChooseMenu(new List<string> { "Change password", "Track time" });
+
+                    if (choice2 == 1)
+                    {
+                        string oldPassword = ExtendedConsole.GetInput("Enter Old Password:");
+                        string newPassword = ExtendedConsole.GetInput("Enter New Password:");
+                        if (!ValidationHelper.ValidateStringInput(oldPassword) || !ValidationHelper.ValidateStringInput(newPassword))
+                        {
+                            ExtendedConsole.PrintError("Please enter a values");
+                            
+                        }
+                        bool isChangePassword = _userService.ChangePassword(oldPassword, newPassword);
+                        if (isChangePassword)
+                        {
+                            ExtendedConsole.PrintSuccess("Successfully changed a password");
+                        
+                        }
+                        else
+                        {
+                            ExtendedConsole.PrintError("Password changed failed! Please try again.");
+                           
+                        }
+                    }
+                    else if (choice2 == 2)
+                    {  
                     TrackActivityClass trackActivityClass = new TrackActivityClass();
                     trackActivityClass.TrackActivity(inputUser);
+                    }
+                    else
+                    {
+                        ExtendedConsole.PrintError("Invalid input.");
+                    }
+
                 }
                 else if (choice == 2)
                 {
                     User newUser = _uiServices.RegisterMenu();
-                    _userService.Register(newUser.FirstName,newUser.LastName,newUser.Username, newUser.Password);
+                    _userService.Register(newUser.FirstName, newUser.LastName, newUser.Username, newUser.Password);
                     ExtendedConsole.PrintSuccess("Registration successful!");
-                   
                 }
+                
                 else if (choice == 3)
                 {
                     _uiServices.EndMenu();
                     Environment.Exit(0);
                 }
+                
             }
             catch (Exception ex)
             {

@@ -1,15 +1,15 @@
 ﻿using ClassLibrary.Services.Enums;
 
 namespace ClassLibrary.Domain.Activitys
-{
-    public class Working : ActivityBase
     {
-        public WorkingE Type { get; set; }
-        public double TimeSpentOnActivity { get; set; }
-
-        public Working(WorkingE workingRole)
+        public class Working : ActivityBase
         {
-            Type = workingRole;
+            public WorkingE Type { get; set; }
+            public TimeSpan TimeSpentOnActivity { get; set; }
+     
+            public Working (WorkingE workingE)
+            {
+                Type = workingE;
+            }
         }
     }
-}

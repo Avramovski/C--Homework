@@ -27,8 +27,16 @@ namespace ClassLibrary.Services.Models
             CurrentUser = userDb;
            
         }
+        public bool ChangePassword(string oldPassword, string newPassword)
+        {
+            if (CurrentUser.Password != oldPassword || !ValidationHelper.ValidatiePassword(newPassword) || oldPassword == newPassword)
+            {
+                return false;
+            }
+            CurrentUser.Password = newPassword;
+            return Update(CurrentUser);
+        }
 
-       
 
         public void Register(string firstName,string lastName,string username, string password)
         {

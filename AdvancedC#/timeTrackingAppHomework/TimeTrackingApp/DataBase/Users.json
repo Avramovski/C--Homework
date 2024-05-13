@@ -3,8 +3,24 @@
         "FirstName": "Nikola",
         "LastName": "Avramovski",
         "Username": "Nikola",
-        "Password": "Nikola123",
-        "Reading": [],
+        "Password": "Nikola1234",
+        "Reading": [
+            {
+                "TimeSpentOnActivity": "00:00:05.3730211",
+                "Pages": 6,
+                "Type": 3
+            },
+            {
+                "TimeSpentOnActivity": "00:00:06.6473861",
+                "Pages": 11,
+                "Type": 1
+            },
+            {
+                "TimeSpentOnActivity": "00:00:01.7363201",
+                "Pages": 44,
+                "Type": 2
+            }
+        ],
         "Exercising": [
             {
                 "TimeSpentOnActivity": "00:00:04.5737788",
@@ -13,10 +29,35 @@
             {
                 "TimeSpentOnActivity": "00:00:06.1170986",
                 "Type": 3
+            },
+            {
+                "TimeSpentOnActivity": "00:00:03.4033466",
+                "Type": 1
+            }
+        ],
+        "Working": [],
+        "Hobbies": [
+            {
+                "TimeSpentOnActivity": "00:00:04.0999362",
+                "Type": 1
+            }
+        ],
+        "Id": 12
+    },
+    {
+        "FirstName": "Filip",
+        "LastName": "Zlatko",
+        "Username": "Fico123",
+        "Password": "Fico123",
+        "Reading": [],
+        "Exercising": [
+            {
+                "TimeSpentOnActivity": "00:00:11.6099514",
+                "Type": 3
             }
         ],
         "Working": [],
         "Hobbies": [],
-        "Id": 12
+        "Id": 13
     }
 ]

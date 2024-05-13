@@ -9,7 +9,9 @@ namespace ClassLibrary.Services.Interfaces
         void Login(string username, string password);
         void Register(string firstName, string lastName, string username, string password);
         void Lgout();
-       
+
+        bool ChangePassword(string oldPassword, string newPassword);
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Domain;
+using ClassLibrary.Domain.Activitys;
 using ClassLibrary.Domain.DomainModels;
 using ClassLibrary.Services.ActivitiesService;
 using ClassLibrary.Services.Interfaces;
@@ -29,16 +30,16 @@ namespace ClassLibrary.Services.Models
             switch (activityChoice)
             {
                 case "1":
-                    TrackReading();
+                    TrackReading(userDb);
                     break;
                 case "2":
                     TrackExercising(userDb);
                     break;
                 case "3":
-                    TrackWorking();
+                    TrackWorking(userDb);
                     break;
                 case "4":
-                    TrackOtherHobbies();
+                    TrackOtherHobbies(userDb);
                     break;
                 default:
                     Console.WriteLine("Invalid input. Please try again.");
@@ -46,45 +47,10 @@ namespace ClassLibrary.Services.Models
             }
         }
 
-        private void TrackReading()
+        private void TrackReading(User user)
         {
-            Console.WriteLine("Reading selected.");
-            Console.Write("Enter the number of pages read: ");
-            int pagesRead = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Select the type of reading material:");
-            Console.WriteLine("1. Belles Lettres");
-            Console.WriteLine("2. Fiction");
-            Console.WriteLine("3. Professional Literature");
-            Console.Write("Enter the number corresponding to the type: ");
-            int typeChoice = Convert.ToInt32(Console.ReadLine());
-           
-            string type = "";
-            
-            MyTimer.Start(1000);
-            switch (typeChoice)
-            {
-                case 1:
-                    type = "Belles Lettres";
-                    Console.WriteLine("Press any key to stop");
-                    break;
-                case 2:
-                    type = "Fiction";
-                    Console.WriteLine("Press any key to stop");
-                    break;
-                case 3:
-                    type = "Professional Literature";
-                    Console.WriteLine("Press any key to stop");
-                    break;
-                default:
-                    Console.WriteLine("Invalid input. Type set to default");
-                    type = "Unknown";
-                    break;
-            }
-            Console.ReadKey();
-            MyTimer.Stop();
-
-            Console.WriteLine($"Tracking reading activity. Pages read: {pagesRead}, Type: {type}");
+           ReadingService readingService = new ReadingService();
+            readingService.TimeReading(user);
 
         }
 
@@ -94,15 +60,16 @@ namespace ClassLibrary.Services.Models
             exercisingService.TimeExercising(user);
         }
 
-        private void TrackWorking()
+        private void TrackWorking(User user)
         {
-            Console.WriteLine("Working selected.");
-           
+            WorkingService workingService = new WorkingService();
+            workingService.TimeWorking(user);   
         }
 
-        private void TrackOtherHobbies()
+        private void TrackOtherHobbies(User user)
         {
-            Console.WriteLine("Other Hobbies selected.");
+            HobbiesService hobbiesService = new HobbiesService();
+            hobbiesService.TimerHobbies(user);
             
         }
     }
